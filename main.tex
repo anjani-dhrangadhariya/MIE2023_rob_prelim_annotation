@@ -1,0 +1,112 @@
+
+\documentclass{IOS-Book-Article}
+
+\usepackage{mathptmx}
+\usepackage{soul}\setuldepth{article}
+%\usepackage{times}
+%\normalfont
+%\usepackage[T1]{fontenc}
+%\usepackage[mtplusscr,mtbold]{mathtime}
+%
+\def\hb{\hbox to 11.5 cm{}}
+
+\begin{document}
+
+\pagestyle{headings}
+\def\thepage{}
+\begin{frontmatter}              % The preamble begins here.
+
+
+%\pretitle{Pretitle}
+\title{First Steps towards Developing a Risk of Bias Corpus of Randomized Controlled Trials}
+
+\markboth{}{April 2022\hb}
+%\subtitle{Subtitle}
+
+\author[A,B]{\fnms{Anjani} \snm{Dhrangadhariya}\orcid{0000-0003-1691-1338}%
+\thanks{Corresponding Author: Anjani Dhrangadhariya, University of Applied Sciences Western Switzerland (HES-SO), Technopole 3,
+3960 Sierre, Switzerland; E-mail:
+anjani.dhrangadhariya@hevs.ch.}},
+\author[C,D]{\fnms{Roger} \snm{Hilfiker}}
+,
+\author[C,D]{\fnms{Martin} \snm{Sattlemayer}}
+,
+\author[C,D]{\fnms{Katia} \snm{Giacomino}}
+,
+\author[C,D]{\fnms{Rahel} \snm{Caliesch}}
+,
+\author[C,D]{\fnms{Simone} \snm{Elsig}}
+,
+\author[E,F]{\fnms{Nona} \snm{Naderi}}
+and
+\author[A,B]{\fnms{Henning} \snm{M\"uller}}
+
+\runningauthor{A. Dhrangadhariya et al.}
+\address[A]{Informatics Institute, HES-SO Valais-Wallis, Sierre, Switzerland}
+\address[B]{University of Geneva (UNIGE), Geneva, Switzerland}
+\address[C]{School of Health Sciences, HES-SO Valais-Wallis, Leukerbad, Switzerland.}
+\address[D]{Department of Physiotherapy, HES-SO Valais-Wallis, Leukerbad, Switzerland.}
+\address[E]{Geneva School of Business Administration, HES-SO Geneva, Switzerland.}
+\address[F]{SIB Swiss Institute of Bioinformatics (SIB), Geneva, Switzerland}
+
+\begin{abstract}
+Risk of bias (RoB) assessment of randomized clinical trials (RCTs) is vital to conducting systematic reviews. 
+Manual RoB assessment for hundreds of clinical trials is a cognitively demanding, lengthy process and is prone to subjective judgment. 
+Supervised machine learning (ML) can help to accelerate this process but requires a hand-labelled corpus.
+There are currently no RoB annotation guidelines or any annotated corpus.
+In this pilot annotation project, we test the feasibility of directly using the revised Cochrane RoB 2.0 tool for RCTs for developing an RoB annotated corpus. 
+We also test a multi-level annotation scheme for annotating RCTs with RoB categories.
+We report inter-annotator agreement among four experienced annotators, which ranges between 0\% for some RoB classes and 76\% for others.
+Finally, we discuss the shortcomings of this direct translation of annotation guidelines and scheme and suggest approaches to improve them to obtain an RoB annotated corpus suitable for ML.
+\end{abstract}
+
+\begin{keyword}
+risk of bias\sep annotation\sep
+systematic reviews\sep corpus\sep automation
+\end{keyword}
+\end{frontmatter}
+\markboth{April 2022\hb}{April 2022\hb}
+%\thispagestyle{empty}
+%\pagestyle{empty}
+
+\section{Introduction}
+Systematic reviews (SRs) synthesized from randomized controlled trials (RCTs) are the highest quality of evidence in the evidence hierarchy.
+In theory, an RCT accurately measures the treatment effect on patient outcomes.
+However, it can be biased in practice due to flawed study design, execution, analysis or outcome reporting.
+Therefore, researchers conducting SRs must rigorously look for possible biases in the RCTs before using them for writing SRs.
+Published RCTs are exponentially increasing~\footnote{\url{https://pubmed.ncbi.nlm.nih.gov/?term=randomized\%20controlled\%20trial&filter=pubt.randomizedcontrolledtrial}} over time, so manual RoB assessment for every study becomes a protracted process.
+Machine learning (ML) can help accelerate the RoB assessment process by directly pointing the reviewers to the parts of the text relevant to identifying bias, leading to quickly judging the trial quality.
+Marshall \textit{et al.} attempted automation of RoB assessment using distant supervision approach supported by proprietary data from the Cochrane Database of Systematic Reviews (CDSR).~\cite{marshall2015automating}
+In the same year, Millard \textit{et al.} also attempted automating RoB assessment using proprietary data.~\cite{millard2016machine}
+Recently, Wang \textit{et al.} released a hand-labelled animal studies corpus\cite{wang2022risk}.
+However, to date, we neither know any publicly available manually labelled corpus for RCTs nor any corpus annotation guidelines that could help to annotate one.
+RoB assessment is a knowledge-heavy task where even highly trained experts are prone to subjective judgments.
+The primary requirement to develop such a corpus entails creating a clear-cut annotation scheme and annotation guidelines.
+As neither the corpus annotation guidelines nor the annotation scheme exists for RoB, this work is focused on two primary concerns.
+The main aim was to test whether revised Cochrane RoB 2.0 assessment guidelines could be used as RoB corpus annotation guidelines to develop a corpus that could be used for training supervised ML models.
+Another aim was to develop and test an RoB annotation scheme that closely mimics the revised Cochrane RoB 2.0 tool.~\cite{sterne2019rob}
+
+\section{Methods}
+
+\section{Results}
+
+\section{Discussion}
+
+\section{Conclusion}
+\label{sec:conclusion}
+%
+In conclusion, revised Cochrane's RoB assessment 2.0 tool cannot be directly used as RoB corpus annotation guidelines.
+The annotation scheme directly adapted from RoB 2.0 document also needs improvement, as detailed in the discussion section.
+The annotation scheme directly adapted from RoB 2.0 document also needs improvement, as detailed in the discussion section.
+We are using insights gained this pilot project to develop crisp annotation guidelines to obtain consistent annotations.
+The annotated RCTs from this study are available on Zenodo (DOI: ).
+%
+%
+%
+%%%%% References %%%%%
+\bibliographystyle{spiebib} 
+%
+%
+\bibliography{bibliography}
+%
+\end{document}
