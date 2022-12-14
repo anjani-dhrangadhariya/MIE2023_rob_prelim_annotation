@@ -18,7 +18,7 @@
 
 
 %\pretitle{Pretitle}
-\title{First Steps towards Developing a Risk of Bias Corpus of Randomized Controlled Trials}
+\title{First Steps towards a Risk of Bias Corpus of Randomized Controlled Trials}
 
 \markboth{}{April 2022\hb}
 %\subtitle{Subtitle}
@@ -71,21 +71,21 @@ systematic reviews\sep corpus\sep automation
 
 \section{Introduction}
 Systematic reviews (SRs) synthesized from randomized controlled trials (RCTs) are the highest quality of evidence in the evidence hierarchy.
-In theory, an RCT accurately measures the treatment effect on patient outcomes.
-However, it can be biased in practice due to flawed study design, execution, analysis or outcome reporting.
-Therefore, researchers conducting SRs must rigorously look for possible biases in the RCTs before using them for writing SRs.
+In theory, an RCT accurately measures the treatment effect on patient outcomes but can be biased in practice due to flawed study design, execution, analysis or outcome reporting.\cite{hariton2018randomised}
+Biases in RCTs cannot be measured, but the risk of bias (RoB) can be assessed.
+The researchers conducting SRs must rigorously look for possible biases before incorporating them into SRs.
 Published RCTs are exponentially increasing~\footnote{\url{https://pubmed.ncbi.nlm.nih.gov/?term=randomized\%20controlled\%20trial&filter=pubt.randomizedcontrolledtrial}} over time, so manual RoB assessment for every study becomes a protracted process.
-Machine learning (ML) can help accelerate the RoB assessment process by directly pointing the reviewers to the parts of the text relevant to identifying bias, leading to quickly judging the trial quality.
-Marshall \textit{et al.} attempted automation of RoB assessment using distant supervision approach supported by proprietary data from the Cochrane Database of Systematic Reviews (CDSR).~\cite{marshall2015automating}
-In the same year, Millard \textit{et al.} also attempted automating RoB assessment using proprietary data.~\cite{millard2016machine}
-Recently, Wang \textit{et al.} released a hand-labelled animal studies corpus\cite{wang2022risk}.
-However, to date, we neither know any publicly available manually labelled corpus for RCTs nor any corpus annotation guidelines that could help to annotate one.
+Machine learning (ML) can help accelerate this process by directly pointing the reviewers to the parts of the text relevant to identifying RoB, leading to quickly judging the trial quality.
+Both Marshall \textit{et al.} and Millard \textit{et al.} attempted RoB assessment, albeit using proprietary, paywalled data~\cite{marshall2015automating,millard2016machine}.
+Recently, Wang \textit{et al.} released a hand-labelled RoB corpus for animal studies using a preclinical RoB assessment tool.~\cite{wang2022risk}.
+However, to date, we neither know any publicly available hand-labelled corpus for human RCTs using the widely used revised Cochrane's RoB 2.0 tool nor any corpus annotation guidelines that could help to annotate one.~\cite{sterne2019rob,lansbury2020co}
 RoB assessment is a knowledge-heavy task where even highly trained experts are prone to subjective judgments.
-The primary requirement to develop such a corpus entails creating a clear-cut annotation scheme and annotation guidelines.
-As neither the corpus annotation guidelines nor the annotation scheme exists for RoB, this work is focused on two primary concerns.
-The main aim was to test whether revised Cochrane RoB 2.0 assessment guidelines could be used as RoB corpus annotation guidelines to develop a corpus that could be used for training supervised ML models.
-Another aim was to develop and test an RoB annotation scheme that closely mimics the revised Cochrane RoB 2.0 tool.~\cite{sterne2019rob}
-
+The primary requirement to develop such a corpus entails creating a clear-cut annotation scheme and guidelines, and as neither of them exists, this work is focused on two primary concerns.
+1) To test whether revised Cochrane RoB 2.0 assessment guidelines could be used as RoB corpus annotation guidelines to develop a corpus that could be used for training supervised ML models.
+2) To develop and test an RoB annotation scheme that closely mimics the RoB 2.0 tool.~\cite{sterne2019rob}
+%
+%
+%
 \section{Methods}
 
 \section{Results}
