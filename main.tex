@@ -111,7 +111,7 @@ A visual representation of our annotation scheme is illustrated in Figure~\ref{f
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.80\textwidth]{Figures/annotation_scheme.pdf}
-    \caption{Annotation scheme. I. signalling question annotation: each signalling question (RoB 1.1, 1.2, 1.3, 2.1, ...) is an entity that could take either of five response options (entity labels). II. Risk domain annotation: each risk domain (RoB 1-5) is a class that could take either of three risk classes based on the assessment of RoB signalling questions. This final risk domain judgment depends upon instructions from RoB 2.0.}
+    \caption{Annotation scheme. I. Signalling question: each signalling question (RoB 1.1, 1.2, ...) is an entity that could take either of five response options (entity labels). II. Risk domain: each risk domain (RoB 1-5) is a document label that could take either of three risk classes based on assessment of all RoB signalling questions.}
     \label{fig:ann_scheme}
 \end{figure}
 %
@@ -132,20 +132,19 @@ If all three were relevant then all were annotated.
 \subsection{Pilot annotation}
 \label{subsec:annotation}
 %
-The four physiotherapists (R.H., M.S., K.G., R.C.) did the pilot annotation on ten RCTs using the RoB 2.0, generic annotation guidelines and the developed annotation scheme.
-These 10 RCTs were selected in the following way.
+The four physiotherapists (R.H., M.S., K.G., R.C.), who consented to annotating, did the pilot annotation on a corpus of ten RCTs sampled in the following manner.
 An Entrez~\footnote{The Entrez Global Query Cross-Database Search System is a federated search engine or web portal that allows users to search PubMed database} search using the search query ``{\fontfamily{qcr}\selectfont (randomized[title] or randomized[title]) and (rehabilitation or (physical therapy))}'' was performed ten times to retrieve studies from one-year time-spans each between 2000 - 2019.
 Each query was restricted to retrieve 1000 documents, of which ten were randomly chosen for each time span.
 Of the ten sampled studies, R.H. took the first possible study with a freely available PDF.
 R.H. and M.S. are professors and associate professors, respectively, and K.G. and R.C. are doctoral researchers with experience conducting RoB ratings in several SRs.
 
 
-Tagtog\footnote{\url{https://www.tagtog.com/}}, a commercial tool, was used for annotating the full-text PDFs (Portable Document Format a brief training session for its usage.
+Tagtog\footnote{\url{https://www.tagtog.com/}}, a commercial tool, was used for annotating the full-text PDFs (Portable Document Format).
 The task for the annotator was to annotate text relevant to answering each signalling question entity, choose a judgment response option, and finally select the risk domain judgment for the five risk domains.
 
 We report token-level pairwise F1 measure as an inter-annotator agreement (IAA) for the entity $IAA_{sq}$ and entity label $IAA_{response}$
 annotations.~\cite{brandsen2020creating,deleger2012building}
-$IAA_{sq}$ and $IAA_{response}$ measure how reliable the RoB 2.0 guidelines were for selecting the same parts of the text to answer signalling questions.
+$IAA_{sq}$ and $IAA_{response}$ measure reliability of the RoB 2.0 guidelines for selecting the same parts of the text to answering signalling questions.
 Cohen's Kappa was chosen for the document-level $IAA_{rd}$ agreements.~\cite{mchugh2012interrater}
 %
 %
@@ -153,13 +152,10 @@ Cohen's Kappa was chosen for the document-level $IAA_{rd}$ agreements.~\cite{mch
 \section{Results}
 \label{sec:results}
 %
-Table \ref{tab:iaa_sq_res} reports pairwise $IAA_{sq}$ between the six annotator pairs.
-Individual pairwise agreements range between 0\% (poor) and 75\% (substantial), with most agreement values falling under the poor category and very few under the substantial agreement.
+The Table \ref{tab:iaa_sq_res} reports pairwise $IAA_{sq}$ (left side) between the six annotator pairs (P1-P6) and the $IAA_{response}$ (right side) averaged over all the annotator pairs at the signalling question response option level.
+Individual pairwise agreements $IAA_{sq}$ range between 0\% (poor) and 75\% (substantial), with most values falling under the poor category and very few under the substantial agreement.
 Signalling questions RoB 1.1, 1.2, 1.3, 2.6, and 3.1 fared well in terms of the average pairwise agreement between all pairs, but none of these categories had a substantial agreement.
 Signalling questions 2.3, 2.4, 2.5, 2.7, 3.4, 4.4, 4.5, and entire domain 5 fared extremely poorly or with no agreement or annotation.
-
-
-Table~\ref{tab:iaa_response} reports the $IAA_{response}$ averaged over all the annotator pairs at the signalling question response option level.
 The $IAA_{response}$ scores are considerably lower (to zero) than agreement at the signalling question level ($IAA_{sq}$), hinting that annotators assign different response options for the text relevant to answering a signalling question. 
 Most annotators had zero agreement or did not annotate any text relevant to answering the signalling questions for this domain.
 
@@ -192,7 +188,7 @@ Most annotators had zero agreement or did not annotate any text relevant to answ
         5.2 & 23.9 & 0.0 & 0.0 & 0.0 & 0.0 & 2.4 & 4.4 & - & 0.0 & 0.0 & 0.0 & 0.0 \\ 
         5.3 & 0.2 & 0.0 & 0.0 & 0.4 & 8.1 & 42.0 & 8.4 & - & 0.0 & 0.6 & 0.0 & 0.0 \\ \hline
     \end{tabular}
-    \caption{\label{tab:iaa_sq_res}}
+    \caption{\label{tab:iaa_sq_res} Left Side: The table lists down $IAA_{sq}$ between the pair of annotators for the risk of bias signalling questions at the text evidence level. Note: A dash (-) shows that one of the annotators did not annotate any text for a particular signalling question. Right side: The table lists down the inter-annotator agreement $IAA_{sq}$ averaged over the six annotator pairs for the risk of bias signalling questions at the ``response'' option level. Note: SQ = Signalling Question, Y = Yes, PY = Probably Yes, NI = No Information, N = No and PN = Probably No. Note: SQ = Signalling Question, Avg. = Average}
 \end{table}
 
 %
