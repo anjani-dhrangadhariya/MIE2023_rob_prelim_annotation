@@ -110,20 +110,17 @@ Developing such a corpus entails creating a clear-cut annotation scheme and guid
 %
 \subsection{Formulating Annotation Scheme}
 %
-RoB 2.0 tool divides biases into five risk domains which further decompose into several signalling questions, each corresponding to different parts of the trial design.
+RoB 2.0 tool divides biases into five risk domains which further decompose into several signalling questions (SQ), each corresponding to different parts of the trial design.
 Each signalling question prompts the reviewer to look for a piece(s) of factual evidence in the RCT and, depending on the amount of evidence found to respond with one of the five response options: ``Yes'', ``Probably yes'', ``No'', ``Probably no'', or ``No information''.
-E.g. to respond to the signalling question ``Was the allocation sequence random?'', the reviewers need to identify whether a proper methodology was used for random participant allocation and only if a proper methodology is identified the reviewer responds to this question as ``Yes'' and otherwise ``No''.
-
-We formulated an annotation scheme (see Figure~\ref{fig:ann_scheme}) where each signalling question is an entity.
+E.g. to respond to the SQ ``Was the allocation sequence random?'', the reviewers need to identify whether a proper methodology was used for random participant allocation and only if a proper methodology is identified the reviewer responds to this question as ``Yes'' and otherwise ``No''.
+We formulated an annotation scheme (see Figure~\ref{fig:ann_scheme}) where each SQ is an entity.
 Each entity has five entity labels corresponding to the five response options to that question.
 Entities represent the factual evidence from the RCTs, and the entity labels incorporate the reviewer's risk judgment.
-%The cumulative risk judgment (``Low-risk'', ``High-risk'' or ``Some-concerns'') from each risk domain was estimated using decision flowcharts in RoB 2.0, combining the responses from all the signalling questions.
-%To account for this, we had an additional document-level annotation for each risk domain whereby a reviewer chose either of the three risk judgments.
 %
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.90\textwidth]{Figures/annotation_scheme.pdf}
-    \caption{Annotation scheme. I. Signalling question: each signalling question (RoB 1.1, 1.2, ...) is an entity that could take either of five response options (entity labels). II. Risk domain: each risk domain (RoB 1-5) is a document label that could take either of three risk classes based on assessment of all RoB signalling questions.}
+    \includegraphics[width=\textwidth]{Figures/annotation_scheme.pdf}
+    \caption{Annotation scheme. I. SQ level: each SQ (RoB 1.1, 1.2, ...) is an entity that could take either of five response options (entity labels). SQ response judgements for individual risk domains (RoB 1-5) could be combined to arrive at risk domain judgement. We do not address risk domain judgments in this work.}
     \label{fig:ann_scheme}
 \end{figure}
 %
@@ -134,7 +131,7 @@ Entities represent the factual evidence from the RCTs, and the entity labels inc
 %
 Full-text RCTs were annotated using the RoB assessment instructions from the RoB 2.0.~\footnote{\url{https://drive.google.com/file/d/19R9savfPdCHC8XLz2iiMvL_71lPJERWK/view}}
 A.D. developed the generic annotation guidelines with four physiotherapists experienced in bias assessment to ensure consistency.
-Complete sentence(s) or phrase(s) were annotated depending upon the text parts relevant to answering a signalling question.
+Complete sentence(s) or phrase(s) were annotated depending upon the text parts relevant to answering a SQ.
 All the text information pertinent to answering a question was marked, even if the information was found in different parts of the full text.
 Table or figure captions relevant to answering were marked.
 If the information was not found in the captions, it was marked within the table contents.
@@ -155,7 +152,7 @@ Tagtog\footnote{\url{https://www.tagtog.com/}}, a commercial tool, was used for 
 The task was to annotate text relevant to answering each signalling question entity and choose a judgment response option entity label.
 %and finally select the risk domain judgment for the five risk domains.
 We report token-level pairwise F1 measure as an inter-annotator agreement (IAA) for the entity $IAA_{sq}$ and entity label $IAA_{response}$ annotations.~\cite{deleger2012building}
-$IAA_{sq}$ and $IAA_{response}$ measure reliability of the RoB 2.0 guidelines for selecting the same parts of the text to answer signalling questions.
+$IAA_{sq}$ and $IAA_{response}$ measure reliability of the RoB 2.0 guidelines for selecting the same parts of the text to answer SQs.
 %Cohen's Kappa was chosen for the document-level $IAA_{rd}$ agreements.~\cite{mchugh2012interrater}
 %
 %
@@ -163,13 +160,13 @@ $IAA_{sq}$ and $IAA_{response}$ measure reliability of the RoB 2.0 guidelines fo
 \section{Results}
 \label{sec:results}
 %
-The pilot annotation resulted in 902 labels corresponding to the signalling questions and their response options.
-The Table \ref{tab:iaa_sq_res} reports pairwise $IAA_{sq}$ and $IAA_{response}$ averaged over all the annotator pairs at the signalling question response option level.
+The pilot annotation resulted in 902 labels corresponding to the SQs and their response options.
+The Table \ref{tab:iaa_sq_res} reports pairwise $IAA_{sq}$ and $IAA_{response}$ averaged over all the annotator pairs at the SQ response option level.
 Individual pairwise $IAA_{sq}$ range between 0\% (poor) and 75\% (substantial), with most values falling under the poor category and very few under the substantial agreement.
-A ``-'' shows that one of the annotators did not annotate any text for a particular signalling question. 
-Signalling questions RoB 1.1, 1.2, 1.3, 2.6, and 3.1 fared well in terms of the average pairwise agreement between all pairs, but none of these categories had a substantial agreement.
+A ``-'' shows that one of the annotators did not annotate any text for a particular SQ. 
+SQs RoB 1.1, 1.2, 1.3, 2.6, and 3.1 fared well in terms of the average pairwise agreement between all pairs, but none of these categories had a substantial agreement.
 Questions 2.1, 2.3, 2.4, 2.5, 2.7, 3.4, 4.4, 4.5, and entire domain 5 fared extremely poorly or with no agreement or no annotation.
-The $IAA_{response}$ scores are considerably lower (to zero) than $IAA_{sq}$, hinting that annotators choose text to answer a signalling question but assign different response options to the selected text. 
+The $IAA_{response}$ scores are considerably lower (to zero) than $IAA_{sq}$, hinting that annotators choose the same text to answer a SQ but assign different response options to the selected text. 
 The $IAA_{response}$ scores remain variable across the risk domains with 52.63\% of the total scores being zero and no annotation for about 22\% of the total scores.
 %
 \begin{table}[!ht]
@@ -203,7 +200,7 @@ The $IAA_{response}$ scores remain variable across the risk domains with 52.63\%
     \Xhline{1.0pt}
     \end{tabular}
     \vspace{1em}
-    \caption{\label{tab:iaa_sq_res} Left Side: of the table lists down the entity level $IAA_{sq}$ between the six annotator pairs (P1-P6) for the RoB signalling questions. Substantial ($\geq$ 61) agreements are bold. Right side: of the table lists down $IAA_{sq}$ averaged over the six annotator pairs for the RoB signalling questions at the ``response'' option or entity label level. Note: SQ = Signalling Question, Y = Yes, PY = Probably Yes, NI = No Information, N = No and PN = Probably No, Avg. = Average}
+    \caption{\label{tab:iaa_sq_res} Left: Table lists down $IAA_{sq}$ between the six annotator pairs (P1-P6) for the RoB SQs. Substantial ($\geq$ 61) agreements are in bold. Right: Table lists down $IAA_{sq}$ averaged over the six annotator pairs for the SQs at the ``response'' option or entity label level. Note: Y = Yes, PY = Probably Yes, NI = No Information, N = No and PN = Probably No, Avg. = Average}
 \end{table}
 %
 %
@@ -211,38 +208,34 @@ The $IAA_{response}$ scores remain variable across the risk domains with 52.63\%
 \section{Discussion}
 \label{sec:disc}
 %
-We analyse the annotations and identify four types of disagreements. 
-A \textit{polarity disagreement} arises when two annotators choose the same chunk of text to answer a signalling question but choose polar opposite response options/entity labels (``Yes'' or ``Probably yes'' vs ``No'' or ``Probably no'' vs ``No information'').
-This category of disagreement arises because of the lack of specific RoB corpus annotation guidelines.
-
-A \textit{degree disagreement} causes low $IAA_{response}$ and arises because some annotators are lenient in judging risk while others are sceptical.
-The lenient ones select definitive ``Yes'' or ``No'' for responding to a signalling question, while the sceptical ones choose ``Probably yes'' or ``Probably no''.
+Annotation analysis identified four types of disagreements. 
+A \textbf{polarity disagreement} arises when two annotators choose the same chunk of text to answer a SQ but choose polar opposite entity labels (``Yes'' or ``Probably yes'' vs ``No'' or ``Probably no'' vs ``No information'').
+In corpus document 1, all four annotators chose the same text evidence (``71 allocated routine services, 67 allocated intervention service, ...'') to answer the SQ 3.1.
+However, three of the four annotators responded to this question with ``Yes'', but one chose ``Probably no''.
+This SQ asks whether the outcomes data were available for all, or nearly all, participants randomized but does not clarify the exact cut-off for how many participant dropouts increase the risk?
+Therefore, the annotators make subjective response judgments depending upon what exact percentage of participant dropout is considered valid in their experience.
+%This category of disagreement arises because of the lack of specific RoB corpus annotation guidelines.
+A \textbf{degree disagreement} causes low $IAA_{response}$ and arises because some annotators are lenient in judging risk while others are sceptical.
+The lenient ones select definitive ``Yes'' or ``No'' for responding to a SQ, while the sceptical ones choose ``Probably yes'' or ``Probably no''.
 A practical and rationally justified solution is to merge the response options ``Probably yes'' with ``Yes'' and ``Probably no'' with ``No'' to reduce the complexity of the task and increase IAA without altering the final risk judgment for this risk domain.~\cite{sterne2019rob}
-
-A low IAA is also caused by our annotation guidelines not limiting the annotators to selecting either the phrase vs a sentence(s) vs a paragraph for answering the question leading to a \textit{text span disagreement}.
-This guideline leads to some annotators using and annotating very condensed information to come to a response.
-In contrast, others use an entire paragraph to reach the same response for a signalling question leading to a low token-level IAA.
-This problem requires mending the annotation guidelines to precisely instruct authors to select the complete information they used to decide or the minimum necessary information to decide on a signalling question.
-Another method is to automatically extend the more condensed (phrase-bound) annotations to the broadest annotations.
-
-
-
-Sometimes annotators came to a response judgment for a signalling question but used different parts of the text to reach this judgment leading to \textit{disparate document section disagreement}.
-Such disagreements emanate from a lack of crisp corpus annotation guidelines as well.
-We will adapt the guidelines to instruct the annotators about what part of the RCT to annotate and what part to not annotate for a particular signalling question.
-
-
-We noticed many signalling questions remained unanswered because the annotators did not understand what part of the text to annotate, even after following the RoB 2.0 guidelines.
-Thus, it is imperative to develop clear-cut annotation guidelines instructing annotators to choose relevant evidence at the appropriate position in RCTs.
+A low IAA is also caused by our annotation guidelines not limiting the annotators to selecting either the phrase vs a sentence(s) vs a paragraph for answering the question leading to a \textbf{text span disagreement}.
+RoB 2.0 tool led to some annotators using and annotating very condensed information to come to a response.
+In contrast, others used an entire paragraph to reach the same response for a SQ leading to a low token-level IAA.
+This problem requires mending the annotation guidelines to precisely instruct authors to select the complete information they used to decide or the minimum necessary information to decide on a SQ.
+Another method is automatically extending the more condensed annotations to the broadest ones.
+Sometimes annotators came to a response judgment for a SQ but used different parts of the RCT text leading to \textbf{disparate document section disagreement}.
+Such disagreements emanate because RoB 2.0 guidelines do not instruct the annotators about what part of the RCT to annotate and what part to not annotate for a particular SQ.
+We noticed many SQs remained unanswered because the annotators did not understand what part of the text to annotate, even after following the RoB 2.0 guidelines.
 %
 %
 %
 \section{Conclusion}
 \label{sec:conclusion}
 %
-We conclude that RoB 2.0 tool cannot be directly used as RoB corpus annotation guidelines.
-The annotation scheme directly adapted from RoB 2.0 document also needs improvement, as detailed in the discussion.
-Currently, we are using the insights from this pilot project to develop crisp annotation guidelines to obtain consistent annotations.
+In conclusion, RoB 2.0 cannot be directly used as corpus annotation guidelines.
+It is imperative to develop clear-cut guidelines to instruct the annotators in SQ and response judgment decisions.
+The multi-level annotation schema also needs improvement.
+We are using the insights from this pilot annotation to develop detailed, crisp guidelines to obtain consistent annotations. 
 The annotated dataset is available on Zenodo.
 %
 %
