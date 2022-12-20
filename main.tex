@@ -45,7 +45,7 @@
 anjani.dhrangadhariya@hevs.ch.}},
 \author[C,D]{\fnms{Roger} \snm{Hilfiker}}
 ,
-\author[C,D]{\fnms{Martin} \snm{Sattlemayer}}
+\author[C,D]{\fnms{Martin} \snm{Sattelmayer}}
 ,
 \author[C,D]{\fnms{Katia} \snm{Giacomino}}
 ,
@@ -70,8 +70,9 @@ Risk of bias (RoB) assessment of randomized clinical trials (RCTs) is vital to c
 Manual RoB assessment for hundreds of RCTs is a cognitively demanding, lengthy process and is prone to subjective judgment. 
 Supervised machine learning (ML) can help to accelerate this process but requires a hand-labelled corpus.
 There are currently no RoB annotation guidelines for randomized clinical trials or any annotated corpora.
-In this pilot project, we test the practicality of directly using the revised Cochrane RoB 2.0 tool for developing an RoB annotated corpus with a novel multi-level annotation scheme.
-We report inter-annotator agreement among four experienced annotators, which ranges between 0\% for some bias classes and 76\% for others.
+In this pilot project, we test the practicality of directly using the revised Cochrane RoB 2.0 guidelines for developing an RoB annotated corpus with a novel multi-level annotation scheme.
+We report inter-annotator agreement among four annotators who used Cochrane RoB 2.0 guidelines.
+The agreement ranges between 0\% for some bias classes and 76\% for others.
 Finally, we discuss the shortcomings of this direct translation of annotation guidelines and scheme and suggest approaches to improve them to obtain an RoB annotated corpus suitable for ML.
 \end{abstract}
 
@@ -91,15 +92,14 @@ systematic reviews\sep corpus\sep automation
 %
 Systematic reviews (SRs) synthesized from randomized controlled trials (RCTs) are the highest quality of evidence in the evidence hierarchy.
 In theory, an RCT accurately measures the treatment effect on patient outcomes but can be biased in practice due to flawed study design, execution, analysis or outcome reporting.~\cite{hariton2018randomised}
-Biases in RCTs cannot be measured, but the risk of bias (RoB) can be assessed.
-The researchers conducting SRs must rigorously look for possible biases before incorporating them into SRs.
-Published RCTs are exponentially increasing~\footnote{\url{https://pubmed.ncbi.nlm.nih.gov/?term=randomized\%20controlled\%20trial&filter=pubt.randomizedcontrolledtrial}} over time, so manual assessment for every study becomes a protracted process.
+Bias risk in RCTs can only be assessed, but a bias cannot be measured.
+So the reviewers must rigorously look for possible biases before incorporating them into SRs.
+Published RCTs are exponentially increasing~\footnote{\url{https://pubmed.ncbi.nlm.nih.gov/?term=randomized\%20controlled\%20trial&filter=pubt.randomizedcontrolledtrial}} over time, making manual assessment a protracted process.
 Machine learning (ML) can help accelerate this process by directly pointing the reviewers to the parts of the text relevant to identifying RoB, leading to quickly judging the trial quality.
 Both Marshall \textit{et al.} and Millard \textit{et al.} attempted automated RoB assessment, albeit using proprietary, pay-walled data.~\cite{marshall2015automating,millard2016machine}
-Recently, Wang \textit{et al.} released a hand-labelled RoB corpus for animal studies using a preclinical RoB assessment tool.~\cite{wang2022risk}
+Recently, Wang \textit{et al.} released a hand-labelled RoB corpus but for preclinical animal studies and not RCTs.~\cite{wang2022risk}
 RoB assessment is a knowledge-heavy task where even highly trained experts are prone to subjective judgments.
-The primary requirement to develop such a corpus entails creating a clear-cut annotation scheme and guidelines.
-As neither exists, this work focuses on two primary concerns.
+Developing such a corpus entails creating a clear-cut annotation scheme and guidelines, and as neither exists, we focus on two primary concerns:
 1) To test whether the widely used revised Cochrane's RoB 2.0 tool for RCTs (RoB 2.0) could be used as RoB annotation guidelines to develop a corpus that could be used for training supervised ML models.
 2) To develop and test an RoB annotation scheme that closely mimics the RoB 2.0.~\cite{lansbury2020co,sterne2019rob}
 %
@@ -122,7 +122,7 @@ Entities represent the factual evidence from the RCTs, and the entity labels inc
 %
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.80\textwidth]{Figures/annotation_scheme.pdf}
+    \includegraphics[width=0.90\textwidth]{Figures/annotation_scheme.pdf}
     \caption{Annotation scheme. I. Signalling question: each signalling question (RoB 1.1, 1.2, ...) is an entity that could take either of five response options (entity labels). II. Risk domain: each risk domain (RoB 1-5) is a document label that could take either of three risk classes based on assessment of all RoB signalling questions.}
     \label{fig:ann_scheme}
 \end{figure}
