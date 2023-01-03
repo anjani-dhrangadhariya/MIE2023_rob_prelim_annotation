@@ -70,7 +70,7 @@ Risk of bias (RoB) assessment of randomized clinical trials (RCTs) is vital to c
 Manual RoB assessment for hundreds of RCTs is a cognitively demanding, lengthy process and is prone to subjective judgment. 
 Supervised machine learning (ML) can help to accelerate this process but requires a hand-labelled corpus.
 There are currently no RoB annotation guidelines for randomized clinical trials or any annotated corpora.
-In this pilot project, we test the practicality of directly using the revised Cochrane RoB 2.0 guidelines for developing an RoB annotated corpus with a novel multi-level annotation scheme.
+In this pilot project, we test the practicality of directly using the revised Cochrane RoB 2.0 guidelines for developing an RoB annotated corpus using a novel multi-level annotation scheme.
 We report inter-annotator agreement among four annotators who used Cochrane RoB 2.0 guidelines.
 The agreement ranges between 0\% for some bias classes and 76\% for others.
 Finally, we discuss the shortcomings of this direct translation of annotation guidelines and scheme and suggest approaches to improve them to obtain an RoB annotated corpus suitable for ML.
@@ -92,13 +92,13 @@ systematic reviews\sep corpus\sep automation
 %
 Systematic reviews (SRs) synthesized from randomized controlled trials (RCTs) are the highest quality of evidence in the evidence hierarchy.
 In theory, an RCT accurately measures the treatment effect on patient outcomes but can be biased in practice due to flawed study design, execution, analysis or outcome reporting.~\cite{hariton2018randomised}
-Bias risk in RCTs can only be assessed, but a bias cannot be measured.
+Biases in RCTs cannot be measured but risk bias can be assessed.
 So the reviewers must rigorously look for possible biases before incorporating them into SRs.
 Published RCTs are exponentially increasing~\footnote{\url{https://pubmed.ncbi.nlm.nih.gov/?term=randomized\%20controlled\%20trial&filter=pubt.randomizedcontrolledtrial}} over time, making manual assessment a protracted process.
 Machine learning (ML) can help accelerate this process by directly pointing the reviewers to the parts of the text relevant to identifying RoB, leading to quickly judging the trial quality.
 Both Marshall \textit{et al.} and Millard \textit{et al.} attempted automated RoB assessment, albeit using proprietary, pay-walled data.~\cite{marshall2015automating,millard2016machine}
 Recently, Wang \textit{et al.} released a hand-labelled RoB corpus but for preclinical animal studies and not RCTs.~\cite{wang2022risk}
-RoB assessment is a knowledge-heavy task where even highly trained experts are prone to subjective judgments.
+RoB assessment of RCTs is a knowledge-heavy task where even highly trained experts are prone to subjective judgments.
 Developing such a corpus entails creating a clear-cut annotation scheme and guidelines, and as neither exists, we focus on two primary concerns:
 1) To test whether the widely used revised Cochrane's RoB 2.0 tool for RCTs (RoB 2.0) could be used as RoB annotation guidelines to develop a corpus that could be used for training supervised ML models.
 2) To develop and test an RoB annotation scheme that closely mimics the RoB 2.0.~\cite{lansbury2020co,sterne2019rob}
@@ -120,7 +120,7 @@ Entities represent the factual evidence from the RCTs, and the entity labels inc
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{Figures/annotation_scheme.pdf}
-    \caption{Annotation scheme. I. SQ level: each SQ (RoB 1.1, 1.2, ...) is an entity that could take either of five response options (entity labels). SQ response judgements for individual risk domains (RoB 1-5) could be combined to arrive at risk domain judgement. We do not address risk domain judgments in this work.}
+    \caption{Annotation scheme. I. SQ level: each SQ (RoB 1.1, 1.2, ...) is an entity that could take either of five response options (entity labels). SQ response judgements for individual risk domains (RoB 1-5) could be combined to arrive at risk domain judgement. Note: We do not address risk domain judgments in this work.}
     \label{fig:ann_scheme}
 \end{figure}
 %
@@ -144,11 +144,9 @@ If all three were relevant then all were annotated.
 The four physiotherapists (R.H., M.S., K.G., R.C.), who consented to annotating, did the pilot annotation on a corpus of ten RCTs sampled in the following manner.
 An Entrez~\footnote{The Entrez Global Query Cross-Database Search System is a federated search engine or web portal that allows users to search PubMed database} search using the search query ``{\fontfamily{qcr}\selectfont (randomized[title] or randomized[title]) and (rehabilitation or (physical therapy))}'' was performed ten times to retrieve studies from one-year time-spans each between 2000 - 2019.
 Each query was restricted to retrieve 1000 documents, of which ten were randomly chosen for each time span.
-Of the ten sampled studies, R.H. took the first possible study with a freely available PDF.
+Of the ten sampled studies, R.H. took the first possible study with a freely available PDF (Portable Document Format).
 R.H. and M.S. are professors and associate professors, respectively, and K.G. and R.C. are doctoral researchers with experience conducting RoB ratings in several SRs.
-
-
-Tagtog\footnote{\url{https://www.tagtog.com/}}, a commercial tool, was used for annotating the PDFs (Portable Document Format).
+Tagtog\footnote{\url{https://www.tagtog.com/}}, a commercial tool, was used for annotating the PDFs.
 The task was to annotate text relevant to answering each signalling question entity and choose a judgment response option entity label.
 %and finally select the risk domain judgment for the five risk domains.
 We report token-level pairwise F1 measure as an inter-annotator agreement (IAA) for the entity $IAA_{sq}$ and entity label $IAA_{response}$ annotations.~\cite{deleger2012building}
@@ -163,7 +161,6 @@ $IAA_{sq}$ and $IAA_{response}$ measure reliability of the RoB 2.0 guidelines fo
 The pilot annotation resulted in 902 labels corresponding to the SQs and their response options.
 The Table \ref{tab:iaa_sq_res} reports pairwise $IAA_{sq}$ and $IAA_{response}$ averaged over all the annotator pairs at the SQ response option level.
 Individual pairwise $IAA_{sq}$ range between 0\% (poor) and 75\% (substantial), with most values falling under the poor category and very few under the substantial agreement.
-A ``-'' shows that one of the annotators did not annotate any text for a particular SQ. 
 SQs RoB 1.1, 1.2, 1.3, 2.6, and 3.1 fared well in terms of the average pairwise agreement between all pairs, but none of these categories had a substantial agreement.
 Questions 2.1, 2.3, 2.4, 2.5, 2.7, 3.4, 4.4, 4.5, and entire domain 5 fared extremely poorly or with no agreement or no annotation.
 The $IAA_{response}$ scores are considerably lower (to zero) than $IAA_{sq}$, hinting that annotators choose the same text to answer a SQ but assign different response options to the selected text. 
@@ -200,7 +197,7 @@ The $IAA_{response}$ scores remain variable across the risk domains with 52.63\%
     \Xhline{1.0pt}
     \end{tabular}
     \vspace{1em}
-    \caption{\label{tab:iaa_sq_res} Left: Table lists down $IAA_{sq}$ between the six annotator pairs (P1-P6) for the RoB SQs. Substantial ($\geq$ 61) agreements are in bold. Right: Table lists down $IAA_{sq}$ averaged over the six annotator pairs for the SQs at the ``response'' option or entity label level. Note: Y = Yes, PY = Probably Yes, NI = No Information, N = No and PN = Probably No, Avg. = Average}
+    \caption{\label{tab:iaa_sq_res} Left: Table lists down $IAA_{sq}$ between the six annotator pairs (P1-P6) for the RoB SQs. Substantial ($\geq$ 61) agreements are in bold. Right: Table lists down $IAA_{sq}$ averaged over the six annotator pairs for the SQs at the ``response'' option or entity label level. Note: Y = Yes, PY = Probably Yes, NI = No Information, N = No and PN = Probably No, Avg. = Average. “-” shows that one of the annotators did not annotate any text for a particular SQ.}
 \end{table}
 %
 %
@@ -210,11 +207,10 @@ The $IAA_{response}$ scores remain variable across the risk domains with 52.63\%
 %
 Annotation analysis identified four types of disagreements. 
 A \textbf{polarity disagreement} arises when two annotators choose the same chunk of text to answer a SQ but choose polar opposite entity labels (``Yes'' or ``Probably yes'' vs ``No'' or ``Probably no'' vs ``No information'').
-In corpus document 1, all four annotators chose the same text evidence (``71 allocated routine services, 67 allocated intervention service, ...'') to answer the SQ 3.1.
+In one of the documents, all four annotators chose the same text evidence (``71 allocated routine services, 67 allocated intervention service, ...'') to answer the SQ 3.1.
 However, three of the four annotators responded to this question with ``Yes'', but one chose ``Probably no''.
 This SQ asks whether the outcomes data were available for all, or nearly all, participants randomized but does not clarify the exact cut-off for how many participant dropouts increase the risk?
 Therefore, the annotators make subjective response judgments depending upon what exact percentage of participant dropout is considered valid in their experience.
-%This category of disagreement arises because of the lack of specific RoB corpus annotation guidelines.
 A \textbf{degree disagreement} causes low $IAA_{response}$ and arises because some annotators are lenient in judging risk while others are sceptical.
 The lenient ones select definitive ``Yes'' or ``No'' for responding to a SQ, while the sceptical ones choose ``Probably yes'' or ``Probably no''.
 A practical and rationally justified solution is to merge the response options ``Probably yes'' with ``Yes'' and ``Probably no'' with ``No'' to reduce the complexity of the task and increase IAA without altering the final risk judgment for this risk domain.~\cite{sterne2019rob}
@@ -223,6 +219,7 @@ RoB 2.0 tool led to some annotators using and annotating very condensed informat
 In contrast, others used an entire paragraph to reach the same response for a SQ leading to a low token-level IAA.
 This problem requires mending the annotation guidelines to precisely instruct authors to select the complete information they used to decide or the minimum necessary information to decide on a SQ.
 Another method is automatically extending the more condensed annotations to the broadest ones.
+In our guideline improvement, we are restricting the annotation to marking the full sentence(s) where the relevant information is found.
 Sometimes annotators came to a response judgment for a SQ but used different parts of the RCT text leading to \textbf{disparate document section disagreement}.
 Such disagreements emanate because RoB 2.0 guidelines do not instruct the annotators about what part of the RCT to annotate and what part to not annotate for a particular SQ.
 We noticed many SQs remained unanswered because the annotators did not understand what part of the text to annotate, even after following the RoB 2.0 guidelines.
