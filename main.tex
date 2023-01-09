@@ -90,11 +90,13 @@ systematic reviews\sep corpus\sep automation
 \label{sec:intro}
 %
 Systematic reviews (SRs) synthesized from randomized controlled trials (RCTs) are the highest quality of evidence in the evidence hierarchy.
+SRs are corners-stones of evidence-based medicine (EBM) and are used by doctors for making medical decisions.
 In theory, an RCT accurately measures the treatment effect on patient outcomes but can be biased in practice due to flawed study design, execution, analysis or outcome reporting.~\cite{hariton2018randomised}
 Biases in RCTs cannot be measured but risk bias can be assessed.
 So the reviewers must rigorously look for possible biases before incorporating them into SRs.
 Published RCTs are exponentially increasing~\footnote{\url{https://pubmed.ncbi.nlm.nih.gov/?term=randomized\%20controlled\%20trial&filter=pubt.randomizedcontrolledtrial}} over time, making manual assessment a protracted process.
 Machine learning (ML) can help accelerate this process by directly pointing the reviewers to the parts of the text relevant to identifying RoB, leading to quickly judging the trial quality.
+Automation will thereby accelerate the process of writing SRs, which is tedious and time-consuming.
 Both Marshall \textit{et al.} and Millard \textit{et al.} attempted automated RoB assessment, albeit using proprietary, pay-walled data.~\cite{marshall2015automating,millard2016machine}
 Recently, Wang \textit{et al.} released a hand-labelled RoB corpus but for preclinical animal studies and not RCTs.~\cite{wang2022risk}
 RoB assessment of RCTs is a knowledge-heavy task where even highly trained experts are prone to subjective judgments.
@@ -196,7 +198,7 @@ The $IAA_{response}$ scores remain variable across the risk domains with 52.63\%
     \Xhline{1.0pt}
     \end{tabular}
     \vspace{1em}
-    \caption{\label{tab:iaa_sq_res} Left: Table lists down $IAA_{sq}$ between the six annotator pairs (P1-P6) for the RoB SQs. Substantial ($\geq$ 61) agreements are in bold. Right: Table lists down $IAA_{sq}$ averaged over the six annotator pairs for the SQs at the ``response'' option or entity label level. Note: Y = Yes, PY = Probably Yes, NI = No Information, N = No and PN = Probably No, Avg. = Average. “-” shows that one of the annotators did not annotate any text for a particular SQ.}
+    \caption{\label{tab:iaa_sq_res} Left: Table lists down $IAA_{sq}$ between the six annotator pairs (P1-P6) for the RoB SQs. Substantial ($\geq$ 61) agreements are in bold. Right: Table lists down $IAA_{sq}$ averaged over the six annotator pairs for the SQs at the entity label level. Note: Y = Yes, PY = Probably Yes, NI = No Information, N = No and PN = Probably No, Avg. = Average. “-” shows that one of the annotators did not annotate any text for a particular SQ.}
 \end{table}
 %
 %
@@ -220,7 +222,7 @@ This problem requires mending the annotation guidelines to precisely instruct au
 Another method is automatically extending the more condensed annotations to the broadest ones.
 In our guideline improvement, we are restricting the annotation to marking the full sentence(s) where the relevant information is found.
 Sometimes annotators came to a response judgment for a SQ but used different parts of the RCT text leading to \textbf{disparate document section disagreement}.
-Such disagreements emanate because RoB 2.0 guidelines do not instruct the annotators about what part of the RCT to annotate and what part to not annotate for a particular SQ.
+Such disagreements emanate because RoB 2.0 do not instruct the annotators about what part of the RCT to annotate and what part to not annotate for a particular SQ.
 We noticed many SQs remained unanswered because the annotators did not understand what part of the text to annotate, even after following the RoB 2.0 guidelines.
 %
 %
@@ -230,7 +232,7 @@ We noticed many SQs remained unanswered because the annotators did not understan
 %
 In conclusion, the revised Cochrane RoB 2.0 guidelines cannot be directly used as RoB corpus annotation guidelines.
 It is imperative to develop clear-cut guidelines to instruct the annotators in signalling question and response judgment decisions.
-The multi-level annotation schema also needs improvement as discussed.
+The multi-level annotation schema also needs improvement, as discussed.
 We are using the insights from this pilot annotation to develop detailed, crisp guidelines and obtain consistent annotations. 
 The annotated dataset will be made available on Zenodo.
 %
